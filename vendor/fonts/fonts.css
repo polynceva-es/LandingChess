@@ -1,8 +1,47 @@
 @font-face {
-  font-family: '';
+  font-family: 'Merriweather';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/Merriweather/Merriweather-Regular.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../fonts/Merriweather/Merriweather-Bold.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: 'Golos_Text';
+  font-style:  normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/GolosText/GolosText-Regular.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: 'Golos_Text';
   font-style:  normal;
   font-weight: 500;
   font-display: swap;
-  src: url() format("woff2"),
-       url() format("woff");
+  src: url(../fonts/GolosText/GolosText-Medium.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: 'Golos_Text';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/GolosText/GolosText-SemiBold.ttf) format("ttf");
+}
+
+@font-face {
+  font-family: 'Golos_Text';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../fonts/GolosText/GolosText-Bold.ttf) format("ttf");
 }
