@@ -145,29 +145,38 @@ h3 {
     transition: all ease-in-out 0.5s;
 }
 
-
-
-
-.running-line__list {
-    display: flex;
-    gap: 12px;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-    background-color: var(--color-red);
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+        
+  .ticker {
+    background: var(--color-red);
+    color: var(--color-white);
     font-family: 'Merriweather', Arial, Helvetica, sans-serif;
     font-weight: 400;
     font-size: 22px;
     line-height: 110%;
     text-transform: uppercase;
-    color: var(--color-white);
-    overflow-x: scroll;
-}
+    max-width: 100vw;
+    overflow: hidden;
+  }
+        
+  .ticker__in {
+    display: flex;
+    gap: 20px;
+    width: fit-content;
+    animation: ticker 10s linear infinite;
+    -webkit-transform-style: preserve-3d;}
+        
+  .ticker__item {
+    padding: 0;
+    white-space: nowrap;
+    -webkit-backface-visibility: hidden;  }
 
-.running-line__item {
-    margin-left: 12px;
-}
 
+
+  
 .events {
     display: flex;
     flex-direction: column;
