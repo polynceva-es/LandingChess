@@ -17,7 +17,6 @@ li {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     min-width: 375px;
     --color-grey: #595653;
     --color-dark-grey: #313131;
@@ -45,15 +44,20 @@ li {
     color: var(--color-white);
     font-size: 22px;
     line-height: 110%;
+    text-wrap: nowrap;
     background-color: var(--color-red);
-    height: 20px;
     overflow: hidden;
     display: flex;
     flex-wrap: nowrap;
+    gap: 12px;
+    box-sizing: border-box;
+    padding: 18px 12px;
+    height: 60px;
 }
 
 .running__item {
 list-style: disc;
+margin: 0 12px;
 }
 
 .header {
@@ -169,7 +173,6 @@ list-style: disc;
 .users {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
 }
 
 
@@ -360,8 +363,8 @@ td {
 }
 
 .users__img {
-width: 320px;
-height: 320px;
+    width: 320px;
+    height: 320px;
 }
 
 .users__name {
@@ -414,6 +417,12 @@ height: 320px;
         max-width: 335px;
     }
 
+    .running {
+        font-size: 16px;
+        padding: 10px 12px;
+        height: 38px;
+    }
+
     .content {
         margin: 48px auto 100px;
         gap: 120px;
@@ -462,7 +471,7 @@ height: 320px;
     .users__img {
         width: 244px;
         height: 244px;
-        }
+    }
 
     .header {
         padding: 18px 0 291px;
