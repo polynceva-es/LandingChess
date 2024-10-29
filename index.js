@@ -1,4 +1,4 @@
-const users = [
+const usersList = [
     {
         name: 'Хозе-Рауль Капабланка',
         status: 'Чемпион мира по шахматам'
@@ -24,19 +24,61 @@ const users = [
         status: 'Гроссмейстер'
     },
 ]
+const stagesList = [
+    {
+        id: 1,
+        text: 'Строительство железнодорожной магистрали Москва-Васюки'
+    },
+    {
+        id: 2,
+        text: 'Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов'
+    },
+    {
+        id: 3,
+        text: 'Поднятие сельского хозяйства в радиусе на тысячу километров: производство овощей, фруктов, икры, шоколадных конфет'
+    },
+    {
+        id: 4,
+        text: 'Строительство дворца для турнира'
+    },
+    {
+        id: 5,
+        text: 'Размещение гаражей для гостевого автотранспорта'
+    },
+    {
+        id: 6,
+        text: 'Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов'
+    },
+    {
+        id: 7,
+        text: 'Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей во все концы света, включая Лос-Анжелос и Мельбурн'
+    }
+]
 
-const participants = document.querySelector('.participants__list');
+const users = document.querySelector('.users__list');
 const fillUsers = (array) => {
-    array.map((elem)=> {
-        participants.insertAdjacentHTML( "beforeend",
-            `<li class="participants__item">
-            <img class="participants__img" src="./images/user.png"/>
-            <h2 class="participants__name">${elem.name}</h2>
-            <h3 class="participants__status">${elem.status}</h3>
-            <button class="participants__button">Подробнее</button>
+    array.map((elem, i) => {
+        users.insertAdjacentHTML("beforeend",
+            `<li key=${i} class="users__item">
+            <img class="users__img" src="./images/user.png"/>
+            <h2 class="users__name">${elem.name}</h2>
+            <h3 class="users__status">${elem.status}</h3>
+            <button class="users__button">Подробнее</button>
         </li>`
         )
     })
-}
+};
+fillUsers(usersList);
 
-// fillUsers(users);
+const stages = document.querySelector('.stages__list');
+const fillStages = (array) => {
+    array.map((elem) => {
+        stages.insertAdjacentHTML("beforeend",
+            `<li class="stages__item" key=${elem.id} id=item${elem.id}>
+            <span class="stages__item-num">${elem.id}</span>
+            <p>${elem.text}</p>
+            </li>`
+        )
+    })
+};
+fillStages(stagesList);
