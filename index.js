@@ -71,7 +71,7 @@ const runningLineText = [
 
 const users = document.querySelector(".users__list");
 const stages = document.querySelector(".stages__list");
-const runningLine = document.querySelectorAll(".running");
+const runningLine = document.querySelectorAll(".running__list");
 
 const fillUsers = (array) => {
   array.map((elem, i) => {
