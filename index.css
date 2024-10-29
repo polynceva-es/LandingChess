@@ -41,6 +41,21 @@ li {
     color: var(--color-dark-grey);
 }
 
+.running {
+    color: var(--color-white);
+    font-size: 22px;
+    line-height: 110%;
+    background-color: var(--color-red);
+    height: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.running__item {
+list-style: disc;
+}
+
 .header {
     background-image: url(./images/header.png);
     background-repeat: no-repeat;
