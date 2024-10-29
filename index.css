@@ -377,6 +377,11 @@ height: 320px;
     letter-spacing: 0px;
 }
 
+.users__button:hover {
+    color: var(--color-white);
+    background-color: var(--color-blue);
+}
+
 .footer__text {
     box-sizing: border-box;
     padding: 40px 0 72px;
