@@ -30,7 +30,8 @@ li {
 
 .page__conteiner {
     margin: 0 auto;
-    max-width: 1222px;
+    max-width: 1366px;
+    padding: 0 72px;
 }
 
 .page__title {
@@ -67,7 +68,7 @@ li {
 }
 
 .header {
-    background-image: url(./images/header.png);
+    background-image: url(./images/header-background.webp);
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover;
@@ -256,6 +257,10 @@ td {
     width: max-content;
 }
 
+td span {
+    text-decoration: line-through var(--color-red);
+}
+
 .events__caption {
     color: var(--color-blue);
     font-family: 'GolosText';
@@ -313,7 +318,7 @@ td {
 .stages__item {
     box-sizing: border-box;
     padding: 20px;
-    background-color: var(--color-beige);
+    background-image: url(./images/background.webp);
     font-family: 'GolosText';
     font-weight: 500;
     font-size: 20px;
@@ -506,6 +511,7 @@ td {
     .header {
         padding: 18px 0 291px;
         gap: 40px;
+        background-image: url(./images/header-background_mobile.webp);
         /* background-size: contain; */
     }
 
