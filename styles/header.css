@@ -82,30 +82,46 @@
     border-radius: 66px;
 }
 
+.header__button a {
+    text-decoration: none;
+}
+
 .header__button_dark {
     background-color: var(--color-black);
-    color: var(--color-white);
     transition: all ease-in-out 0.5s;
+}
+
+.header__button_dark a {
+    color: var(--color-white);
+}
+
+.header__button_dark a:hover {
+    color: var(--color-black);
 }
 
 .header__button_dark:hover {
     background-color: var(--color-yelow);
-    color: var(--color-black);
     transition: all ease-in-out 0.5s;
     border: 2px solid var(--color-yelow)
 }
 
 .header__button_light {
     background: none;
-    color: var(--color-black);
     box-sizing: border-box;
     border: 2px solid var(--color-black);
     transition: all ease-in-out 0.5s;
 }
 
+.header__button_light a {
+    color: var(--color-black);
+}
+
+.header__button_light a:hover {
+    color: var(--color-white);
+}
+
 .header__button_light:hover {
     background-color: var(--color-black);
-    color: var(--color-white);
     transition: all ease-in-out 0.5s;
 }
 

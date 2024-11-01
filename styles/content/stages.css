@@ -9,10 +9,6 @@
     right: -50px;
 }
 
-.stages span {
-    display: flex;
-}
-
 .stages__title,
 .users__title {
     font-family: 'Merriweather', Arial, Helvetica, sans-serif;
@@ -24,6 +20,7 @@
 }
 
 .stages__subtitle {
+    display: inline-block;
     font-family: 'GolosText';
     font-weight: 400;
     font-size: 20px;
@@ -31,6 +28,7 @@
     letter-spacing: 0px;
     color: var(--color-blue);
     width: 280px;
+    text-transform: none;
 }
 
 .stages__list {
@@ -96,14 +94,8 @@
 }
 
 @media (max-width: 975px) {
-
-
     .stages {
         gap: 20px;
-    }
-
-    .stages span {
-        flex-direction: column;
     }
 
     .stages__title,
