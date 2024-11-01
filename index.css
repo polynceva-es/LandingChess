@@ -23,4 +23,13 @@ li {
 
 html {
     scroll-behavior: smooth;
-    }
+    --color-grey: #595653;
+    --color-dark-grey: #313131;
+    --color-white: #FFF;
+    --color-black: #000;
+    --color-blue: #3057A2;
+    --color-red: #F54932;
+    --color-beige: #E9DED4;
+    --color-yelow: #FBCE51;
+    --color-light-grey: #D6D6D6;
+}

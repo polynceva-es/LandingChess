@@ -70,7 +70,10 @@ const runningLineText = [
 ];
 
 const users = document.querySelector(".users__list");
-const stages = document.querySelector(".stages__list");
+const slider = document.querySelector(".stages__slider");
+const stages = slider.querySelector(".stages__list");
+const sliderBtnLeft = slider.querySelector("#left");
+const sliderBtnRight = slider.querySelector("#right");
 const runningLine = document.querySelectorAll(".running__list");
 
 const fillUsers = (array) => {
@@ -100,18 +103,29 @@ const fillStages = (array) => {
 };
 
 const fillRunningLine = (array) => {
-    runningLine.forEach((line) => {
-        array.map((elem) => {
-            line.insertAdjacentHTML(
-              "beforeend",
-              `<li key=${elem.id} class="running__item">
+  runningLine.forEach((line) => {
+    array.map((elem) => {
+      line.insertAdjacentHTML(
+        "beforeend",
+        `<li key=${elem.id} class="running__item">
                     ${elem.text}
                 </li>`
-            );
-          });
-    })
+      );
+    });
+  });
+};
+
+const handleArrow = (direction) => {
+  if (direction === "left") {
+    console.log("left");
+  } else if (direction === "right") {
+    console.log("right");
+  }
 };
 
 fillUsers(usersList);
 fillStages(stagesList);
 fillRunningLine(runningLineText);
+
+sliderBtnLeft.addEventListener("click", ()=> handleArrow("left"));
+sliderBtnRight.addEventListener("click", () => handleArrow("right"));
