@@ -3,6 +3,19 @@
     position: relative;
 }
 
+.stages::after {
+    content: '';
+    position: absolute;
+    right: -3rem;
+    bottom: 0;
+    width: 24rem;
+    height: 14rem;
+    background: url(../../images/airplane.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 .stages__img {
     position: absolute;
     bottom: 0;
@@ -36,20 +49,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 20px;
-    position: relative;
-}
-
-.stages__list::after {
-    content: '';
-    position: absolute;
-    right: -3rem;
-    bottom: 0;
-    width: 24rem;
-    height: 14rem;
-    background: url(../../images/airplane.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    overflow-x: hidden;
 }
 
 .stages__item {
@@ -98,6 +98,14 @@
         gap: 20px;
     }
 
+    .stages::after {
+        right: 0;
+        top: 13rem;
+        bottom: auto;
+        width: 100%;
+        height: 12rem;
+    }
+
     .stages__title,
     .users__title {
         font-size: 36px;
@@ -110,34 +118,55 @@
     }
 
     .stages__list {
-        grid-template-columns: repeat(1, 1fr);
-        gap: 40px;
+        grid-template-columns: repeat(5, 335px);
+        grid-template-rows: repeat(2, 150px);
+        grid-template-areas: "item1 item3 item4 item6 item7" "item2 item3 item5 item6 item7";
+        column-gap: 40px;
+        row-gap: 0;
     }
 
-    .stages__list::after {
-        right: 0;
-        top: -9rem;
-        bottom: auto;
-        width: 100%;
-        height: 12rem;
-    }
-    
     .stages__item {
         font-size: 18px;
-        padding: 60px 20px 20px;
+        padding: 62px 20px 28px 20px;
+    }
+
+    #item1 {
+        grid-area: item1;
+    }
+
+    #item2 {
+        grid-area: item2;
+        padding-top: 28px;
     }
 
     #item3 {
-        grid-row: span 1;
+        grid-row: span 2;
+        grid-area: item3;
+    }
+
+    #item4 {
+        grid-area: item4;
+    }
+
+    #item5 {
+        grid-area: item5;
+        padding-top: 0;
+    }
+
+    #item6 {
+        grid-row: span 2;
+        grid-area: item6;
     }
 
     #item7 {
         grid-column: span 1;
+        grid-row: span 2;
+        grid-area: item7;
     }
 
-    #item7 p {
+    /* #item7 p {
         width: auto;
-    }
+    } */
 
     .stages__img {
         top: 190px;
