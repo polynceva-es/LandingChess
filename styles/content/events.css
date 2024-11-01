@@ -1,0 +1,138 @@
+.events {
+    gap: 64px;
+}
+
+.events__item {
+    display: grid;
+    gap: 44px;
+}
+
+.events__item_lecture {
+    grid-template-columns: auto 394px;
+    grid-template-rows: 250px;
+}
+
+.events__item_session {
+    grid-template-columns: 474px auto;
+    grid-template-rows: 527px;
+}
+
+.events__title {
+    font-size: 36px;
+    line-height: 135%;
+}
+
+
+.events__title_bold {
+    font-weight: 700;
+    color: var(--color-red);
+}
+
+.events__item-conteiner {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+tbody {
+    border: none;
+    width: 100%;
+}
+
+tr {
+    border-bottom: 2px solid #D0D0D0;
+    display: flex;
+    flex-direction: row;
+}
+
+tr:last-of-type {
+    border-bottom: none;
+}
+
+th,
+td {
+    font-family: 'Golos_Text';
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0px;
+}
+
+th {
+    font-weight: 400;
+    color: var(--color-dark-grey);
+    opacity: 70%;
+    text-align: left;
+    padding: 16px 16px 16px 0;
+    width: 306px;
+}
+
+td {
+    font-weight: 600;
+    color: var(--color-black);
+    border-left: 2px solid #D0D0D0;
+    padding: 16px 0 16px 16px;
+    width: max-content;
+}
+
+td span {
+    text-decoration: line-through var(--color-red);
+}
+
+.events__caption {
+    color: var(--color-blue);
+    font-family: 'GolosText';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0px;
+    caption-side: bottom;
+    width: 100%;
+    text-align: start;
+}
+
+@media (max-width: 1200px) {
+    .events {
+        gap: 34px;
+    }
+
+    .events__item {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .events__item_lecture {
+        grid-template-columns: auto 335px;
+        grid-template-rows: 212px;
+    }
+
+    .events__item_session {
+        grid-template-columns: 335px auto;
+        grid-template-rows: 402px;
+    }
+
+
+    .events__title {
+        font-size: 28px;
+    }
+
+    tr {
+        flex-direction: column;
+    }
+
+    th {
+        padding: 16px 0 12px 0;
+        width: 100%;
+    }
+
+    td {
+        border-left: none;
+        padding: 0 0 16px;
+    }
+}

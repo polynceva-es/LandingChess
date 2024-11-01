@@ -1,0 +1,154 @@
+.stages {
+    gap: 54px;
+    position: relative;
+}
+
+.stages__img {
+    position: absolute;
+    bottom: 0;
+    right: -50px;
+}
+
+.stages span {
+    display: flex;
+}
+
+.stages__title,
+.users__title {
+    font-family: 'Merriweather', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 120%;
+    color: var(--color-black);
+    max-width: 806px;
+}
+
+.stages__subtitle {
+    font-family: 'GolosText';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0px;
+    color: var(--color-blue);
+    width: 280px;
+}
+
+.stages__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    position: relative;
+}
+
+.stages__list::after {
+    content: '';
+    position: absolute;
+    right: -3rem;
+    bottom: 0;
+    width: 24rem;
+    height: 14rem;
+    background: url(../../images/airplane.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.stages__item {
+    box-sizing: border-box;
+    padding: 20px;
+    background-image: url(../../images/header-background.webp);
+    font-family: 'GolosText';
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0px;
+    display: flex;
+    gap: 16px;
+}
+
+.stages__item-num {
+    background-color: var(--color-white);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    box-sizing: border-box;
+    padding: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#item3 {
+    grid-row: span 2;
+}
+
+#item7 {
+    grid-column: span 2;
+    width: 100%;
+}
+
+#item7 p {
+    display: block;
+    max-width: 446px;
+}
+
+@media (max-width: 975px) {
+
+
+    .stages {
+        gap: 20px;
+    }
+
+    .stages span {
+        flex-direction: column;
+    }
+
+    .stages__title,
+    .users__title {
+        font-size: 36px;
+    }
+
+    .stages__subtitle {
+        font-size: 18px;
+        width: 335px;
+        margin-bottom: 148px;
+    }
+
+    .stages__list {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 40px;
+    }
+
+    .stages__list::after {
+        right: 0;
+        top: -9rem;
+        bottom: auto;
+        width: 100%;
+        height: 12rem;
+    }
+    
+    .stages__item {
+        font-size: 18px;
+        padding: 60px 20px 20px;
+    }
+
+    #item3 {
+        grid-row: span 1;
+    }
+
+    #item7 {
+        grid-column: span 1;
+    }
+
+    #item7 p {
+        width: auto;
+    }
+
+    .stages__img {
+        top: 190px;
+        left: 10px;
+    }
+}

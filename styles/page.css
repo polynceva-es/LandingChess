@@ -1,0 +1,35 @@
+.page {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+    --color-grey: #595653;
+    --color-dark-grey: #313131;
+    --color-white: #FFF;
+    --color-black: #000;
+    --color-blue: #3057A2;
+    --color-red: #F54932;
+    --color-beige: #E9DED4;
+    --color-yelow: #FBCE51;
+}
+
+.page__conteiner {
+    margin: 0 auto;
+    max-width: 1366px;
+    padding: 0 72px;
+    box-sizing: border-box;
+}
+
+.page__title {
+    text-transform: uppercase;
+    font-family: 'Merriweather', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: var(--color-dark-grey);
+}
+
+@media (max-width: 975px) {
+    .page__conteiner {
+        max-width: 375px;
+        padding: 0 20px;
+    }
+}
