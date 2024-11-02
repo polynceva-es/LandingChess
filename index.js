@@ -1,29 +1,22 @@
-const usersList = [
+let isMobile;
+//conts running line
+const runningLineText = [
   {
-    name: "Хозе-Рауль Капабланка",
-    status: "Чемпион мира по шахматам",
+    id: 1,
+    text: "Дело помощи утопающим — дело рук самих утопающих!",
   },
   {
-    name: "Эммануил Ласкер",
-    status: "Чемпион мира по шахматам",
+    id: 2,
+    text: "Шахматы двигают вперед не только культуру, но и экономику!",
   },
   {
-    name: "Александр Алехин",
-    status: "Чемпион мира по шахматам",
-  },
-  {
-    name: "Арон Нимцович",
-    status: "Чемпион мира по шахматам",
-  },
-  {
-    name: "Рихард Рети",
-    status: "Чемпион мира по шахматам",
-  },
-  {
-    name: "Остап Бендер",
-    status: "Гроссмейстер",
+    id: 3,
+    text: "Лед тронулся, господа присяжные заседатели!",
   },
 ];
+const runningLine = document.querySelectorAll(".running__list");
+
+//consts stages -> slider
 const stagesList = [
   {
     id: 1,
@@ -54,45 +47,51 @@ const stagesList = [
     text: "Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей во все концы света, включая Лос-Анжелос и Мельбурн",
   },
 ];
-const runningLineText = [
-  {
-    id: 1,
-    text: "Дело помощи утопающим — дело рук самих утопающих!",
-  },
-  {
-    id: 2,
-    text: "Шахматы двигают вперед не только культуру, но и экономику!",
-  },
-  {
-    id: 3,
-    text: "Лед тронулся, господа присяжные заседатели!",
-  },
-];
-const runningLine = document.querySelectorAll(".running__list");
-const users = document.querySelector(".users__list");
-const sliderConteiner = document.querySelector(".stages__slider");
-const slider = sliderConteiner.querySelector(".stages__list");
-const sliderBtnLeft = sliderConteiner.querySelector("#left");
-const sliderBtnRight = sliderConteiner.querySelector("#right");
-const dotsConteiner = sliderConteiner.querySelector(".stages__dots");
-
+const stagesSliderConteiner = document.querySelector(".stages__slider");
+const slider = stagesSliderConteiner.querySelector(".stages__list");
+const sliderBtnLeft = stagesSliderConteiner.querySelector("#stages-left");
+const sliderBtnRight = stagesSliderConteiner.querySelector("#stages-right");
+const dotsConteiner = stagesSliderConteiner.querySelector(".stages__dots");
 const slideCount = 5;
 let slideIndex = 0;
 
-// const selectDot = (dotsList, id) => {
-// dotsList.find((dot) => {
-//   const findDot = dot.id === id;
-//   console.log(findDot);
-//   return findDot;
-// })
+//conts users -> slider
+const usersList = [
+  {
+    name: "Хозе-Рауль Капабланка",
+    status: "Чемпион мира по шахматам",
+  },
+  {
+    name: "Эммануил Ласкер",
+    status: "Чемпион мира по шахматам",
+  },
+  {
+    name: "Александр Алехин",
+    status: "Чемпион мира по шахматам",
+  },
+  {
+    name: "Арон Нимцович",
+    status: "Чемпион мира по шахматам",
+  },
+  {
+    name: "Рихард Рети",
+    status: "Чемпион мира по шахматам",
+  },
+  {
+    name: "Остап Бендер",
+    status: "Гроссмейстер",
+  },
+];
+const usersSliderConteiner = document.querySelector(".users__slider");
+const users = usersSliderConteiner.querySelector(".users__list");
+const usersListInSlider = users.querySelectorAll(".users__item");
+const usersBtnLeft = usersSliderConteiner.querySelector("#users-left");
+const usersBtnRight = usersSliderConteiner.querySelector("#users-right");
+const spanCurrentIndex = usersSliderConteiner.querySelector("#currentIndex");
+const usersCount = usersList.length;
+let currentUser = 0;
 
-// if() {
-//   dot.classList.add('stages__dot_active')
-// } else {
-//   dot.classList.remove('stages__dot_active');
-// }
-// }
-
+// --> fill page <--
 const fillUsers = (array) => {
   array.map((elem, i) => {
     users.insertAdjacentHTML(
@@ -132,6 +131,7 @@ const fillRunningLine = (array) => {
   });
 };
 
+// --> stages + slider <--
 const fillDotsInSlider = (number) => {
   for (let i = 0; i < number; i++) {
     dotsConteiner.insertAdjacentHTML(
@@ -176,25 +176,54 @@ const handleArrow = (direction) => {
   }
 };
 
-const handleDot = (dotsList, index) => {
+const handleDot = (index) => {
   slideIndex = index;
-  // selectDot(dotsList, index);
   updateSlider();
 };
 
 const handleResize = () => {
   let windowWidth = window.innerWidth;
   if (windowWidth >= 975) {
+    isMobile = false;
+  } else {isMobile = true}
+  if (!isMobile) {
     slider.style.transform = `translateX(0)`;
+    users.style.transform = `translateX(0)`;
+  }
+  return isMobile
+};
+
+// --> users + slider <--
+const fillCountUser = () => {
+  spanCurrentIndex.textContent = `${currentUser + 1}/${usersCount}`
+}
+
+const updateUserSlider = () => {
+  fillCountUser();
+  users.style.transform = `translateX(calc(${isMobile ? '-367px' : '-414px'} * ${currentUser}))`;
+}
+
+const handleShowUser = (direction) => {
+  if (direction === "left") {
+    currentUser = (currentUser - 1 + usersCount) % usersCount;
+    updateUserSlider()
+  } else if (direction === "right") {
+    currentUser = (currentUser + 1 ) % usersCount;
+    updateUserSlider()
   }
 };
 
-fillUsers(usersList);
+// --> call functions <--
+// fillUsers(usersList);
 fillStages(stagesList);
 fillDotsInSlider(slideCount);
 fillRunningLine(runningLineText);
 updateSlider();
+updateUserSlider();
 
+// --> EventListeners <--
 sliderBtnLeft.addEventListener("click", () => handleArrow("left"));
 sliderBtnRight.addEventListener("click", () => handleArrow("right"));
+usersBtnLeft.addEventListener("click", () => handleShowUser("left"));
+usersBtnRight.addEventListener("click", () => handleShowUser("right"));
 window.addEventListener("resize", handleResize);
