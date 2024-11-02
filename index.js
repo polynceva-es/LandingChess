@@ -79,21 +79,6 @@ const dotsConteiner = sliderConteiner.querySelector(".stages__dots");
 const slideCount = 5;
 let slideIndex = 0;
 
-const disableButtons = () => {
-  if (slideIndex === 0) {
-    sliderBtnLeft.setAttribute("disable", true);
-    sliderBtnLeft.classList.add("stages__button_disabled");
-  } else if (slideIndex === slideCount - 1) {
-    sliderBtnRight.setAttribute("disable", true);
-    sliderBtnRight.classList.add("stages__button_disabled");
-  } else if (slideIndex > 0 && slideIndex < slideCount) {
-    sliderBtnLeft.removeAttribute("disable", true);
-    sliderBtnRight.removeAttribute("disable", true);
-    sliderBtnLeft.classList.remove("stages__button_disabled");
-    sliderBtnRight.classList.remove("stages__button_disabled");
-  }
-};
-
 // const selectDot = (dotsList, id) => {
 // dotsList.find((dot) => {
 //   const findDot = dot.id === id;
@@ -160,16 +145,24 @@ const fillDotsInSlider = (number) => {
   });
 };
 
-fillUsers(usersList);
-fillStages(stagesList);
-fillDotsInSlider(slideCount);
-fillRunningLine(runningLineText);
-
 const updateSlider = () => {
   slider.style.transform = `translateX(calc(-375px * ${slideIndex}))`;
 };
 
-updateSlider();
+const disableButtons = () => {
+  if (slideIndex === 0) {
+    sliderBtnLeft.setAttribute("disable", true);
+    sliderBtnLeft.classList.add("stages__button_disabled");
+  } else if (slideIndex === slideCount - 1) {
+    sliderBtnRight.setAttribute("disable", true);
+    sliderBtnRight.classList.add("stages__button_disabled");
+  } else if (slideIndex > 0 && slideIndex < slideCount) {
+    sliderBtnLeft.removeAttribute("disable", true);
+    sliderBtnRight.removeAttribute("disable", true);
+    sliderBtnLeft.classList.remove("stages__button_disabled");
+    sliderBtnRight.classList.remove("stages__button_disabled");
+  }
+};
 
 const handleArrow = (direction) => {
   if (direction === "left") {
@@ -196,6 +189,12 @@ const handleResize = () => {
     slider.style.transform = `translateX(0)`;
   }
 };
+
+fillUsers(usersList);
+fillStages(stagesList);
+fillDotsInSlider(slideCount);
+fillRunningLine(runningLineText);
+updateSlider();
 
 sliderBtnLeft.addEventListener("click", () => handleArrow("left"));
 sliderBtnRight.addEventListener("click", () => handleArrow("right"));
