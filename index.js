@@ -68,17 +68,45 @@ const runningLineText = [
     text: "Лед тронулся, господа присяжные заседатели!",
   },
 ];
-
 const runningLine = document.querySelectorAll(".running__list");
 const users = document.querySelector(".users__list");
 const sliderConteiner = document.querySelector(".stages__slider");
 const slider = sliderConteiner.querySelector(".stages__list");
 const sliderBtnLeft = sliderConteiner.querySelector("#left");
 const sliderBtnRight = sliderConteiner.querySelector("#right");
-const dotsConteiner = sliderConteiner.querySelector('.stages__dots');
+const dotsConteiner = sliderConteiner.querySelector(".stages__dots");
 
 const slideCount = 5;
 let slideIndex = 0;
+
+const disableButtons = () => {
+  if (slideIndex === 0) {
+    sliderBtnLeft.setAttribute("disable", true);
+    sliderBtnLeft.classList.add("stages__button_disabled");
+  } else if (slideIndex === slideCount - 1) {
+    sliderBtnRight.setAttribute("disable", true);
+    sliderBtnRight.classList.add("stages__button_disabled");
+  } else if (slideIndex > 0 && slideIndex < slideCount) {
+    sliderBtnLeft.removeAttribute("disable", true);
+    sliderBtnRight.removeAttribute("disable", true);
+    sliderBtnLeft.classList.remove("stages__button_disabled");
+    sliderBtnRight.classList.remove("stages__button_disabled");
+  }
+};
+
+// const selectDot = (dotsList, id) => {
+// dotsList.find((dot) => {
+//   const findDot = dot.id === id;
+//   console.log(findDot);
+//   return findDot;
+// })
+
+// if() {
+//   dot.classList.add('stages__dot_active')
+// } else {
+//   dot.classList.remove('stages__dot_active');
+// }
+// }
 
 const fillUsers = (array) => {
   array.map((elem, i) => {
@@ -120,24 +148,17 @@ const fillRunningLine = (array) => {
 };
 
 const fillDotsInSlider = (number) => {
-  for (let i=0; i < number; i++) {
+  for (let i = 0; i < number; i++) {
     dotsConteiner.insertAdjacentHTML(
-      'beforeend',
+      "beforeend",
       `<li key=${i} id=${i} class="stages__dot"></li>`
-    )
+    );
   }
-  const dotsList =  dotsConteiner.querySelectorAll('.stages__dot');
+  const dotsList = dotsConteiner.querySelectorAll(".stages__dot");
   dotsList.forEach((dot) => {
-    dot.addEventListener('click', () => handleDot(dot.id));
-  })
-}
-
-// if(slideIndex == dot.id) {
-//   dot.classList.add('stages__dot_active')
-// } else {
-//   dot.classList.remove('stages__dot_active');
-// }
-
+    dot.addEventListener("click", () => handleDot(dotsList, dot.id));
+  });
+};
 
 fillUsers(usersList);
 fillStages(stagesList);
@@ -153,26 +174,29 @@ updateSlider();
 const handleArrow = (direction) => {
   if (direction === "left") {
     slideIndex = (slideIndex - 1 + slideCount) % slideCount;
+    disableButtons();
     updateSlider();
   } else if (direction === "right") {
     //??
     slideIndex = (slideIndex + 1) % slideCount;
+    disableButtons();
     updateSlider();
   }
 };
 
-const handleDot = (index) => {
+const handleDot = (dotsList, index) => {
   slideIndex = index;
+  // selectDot(dotsList, index);
   updateSlider();
-}
+};
 
 const handleResize = () => {
- let windowWidth = window.innerWidth;
- if (windowWidth >= 975) {
-  slider.style.transform = `translateX(0)`;
- }
-}
+  let windowWidth = window.innerWidth;
+  if (windowWidth >= 975) {
+    slider.style.transform = `translateX(0)`;
+  }
+};
 
 sliderBtnLeft.addEventListener("click", () => handleArrow("left"));
 sliderBtnRight.addEventListener("click", () => handleArrow("right"));
-window.addEventListener('resize', handleResize);
+window.addEventListener("resize", handleResize);
