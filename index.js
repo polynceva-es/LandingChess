@@ -141,7 +141,7 @@ const fillDotsInSlider = (number) => {
   }
   const dotsList = dotsConteiner.querySelectorAll(".stages__dot");
   dotsList.forEach((dot) => {
-    dot.addEventListener("click", () => handleDot(dotsList, dot.id));
+    dot.addEventListener("click", () => handleDot(dot.id));
   });
 };
 
