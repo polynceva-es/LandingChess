@@ -49,7 +49,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 20px;
-    overflow-x: hidden;
+    transform: translateX(0px);
 }
 
 .stages__item {
@@ -90,7 +90,8 @@
 
 #item7 p {
     display: block;
-    max-width: 446px;
+    padding-right: 290px;
+    box-sizing: border-box;
 }
 
 .stages__buttons {
@@ -179,17 +180,26 @@
         margin-bottom: 148px;
     }
 
+    .stages__slider {
+        overflow: hidden;
+        width: 335px;
+        height: 364px;
+    }
+
     .stages__list {
         grid-template-columns: repeat(5, 335px);
         grid-template-rows: repeat(2, 150px);
         grid-template-areas: "item1 item3 item4 item6 item7" "item2 item3 item5 item6 item7";
         column-gap: 40px;
         row-gap: 0;
+        transition: transform ease-in-out 0.5s;
     }
 
     .stages__item {
         font-size: 18px;
         padding: 62px 20px 28px 20px;
+        width: 100%;
+        height: 100%;
     }
 
     #item1 {
@@ -224,6 +234,10 @@
         grid-column: span 1;
         grid-row: span 2;
         grid-area: item7;
+    }
+
+    #item7 p {
+        padding-right: 0;
     }
 
     .stages__img {

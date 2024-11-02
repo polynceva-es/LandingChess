@@ -69,12 +69,16 @@ const runningLineText = [
   },
 ];
 
-const users = document.querySelector(".users__list");
-const slider = document.querySelector(".stages__slider");
-const stages = slider.querySelector(".stages__list");
-const sliderBtnLeft = slider.querySelector("#left");
-const sliderBtnRight = slider.querySelector("#right");
 const runningLine = document.querySelectorAll(".running__list");
+const users = document.querySelector(".users__list");
+const sliderConteiner = document.querySelector(".stages__slider");
+const slider = sliderConteiner.querySelector(".stages__list");
+const sliderBtnLeft = sliderConteiner.querySelector("#left");
+const sliderBtnRight = sliderConteiner.querySelector("#right");
+const dotsConteiner = sliderConteiner.querySelector('.stages__dots');
+
+const slideCount = 5;
+let slideIndex = 0;
 
 const fillUsers = (array) => {
   array.map((elem, i) => {
@@ -92,7 +96,7 @@ const fillUsers = (array) => {
 
 const fillStages = (array) => {
   array.map((elem) => {
-    stages.insertAdjacentHTML(
+    slider.insertAdjacentHTML(
       "beforeend",
       `<li class="stages__item" key=${elem.id} id=item${elem.id}>
             <span class="stages__item-num">${elem.id}</span>
@@ -115,17 +119,60 @@ const fillRunningLine = (array) => {
   });
 };
 
-const handleArrow = (direction) => {
-  if (direction === "left") {
-    console.log("left");
-  } else if (direction === "right") {
-    console.log("right");
+const fillDotsInSlider = (number) => {
+  for (let i=0; i < number; i++) {
+    dotsConteiner.insertAdjacentHTML(
+      'beforeend',
+      `<li key=${i} id=${i} class="stages__dot"></li>`
+    )
   }
-};
+  const dotsList =  dotsConteiner.querySelectorAll('.stages__dot');
+  dotsList.forEach((dot) => {
+    dot.addEventListener('click', () => handleDot(dot.id));
+  })
+}
+
+// if(slideIndex == dot.id) {
+//   dot.classList.add('stages__dot_active')
+// } else {
+//   dot.classList.remove('stages__dot_active');
+// }
+
 
 fillUsers(usersList);
 fillStages(stagesList);
+fillDotsInSlider(slideCount);
 fillRunningLine(runningLineText);
 
-sliderBtnLeft.addEventListener("click", ()=> handleArrow("left"));
+const updateSlider = () => {
+  slider.style.transform = `translateX(calc(-375px * ${slideIndex}))`;
+};
+
+updateSlider();
+
+const handleArrow = (direction) => {
+  if (direction === "left") {
+    slideIndex = (slideIndex - 1 + slideCount) % slideCount;
+    updateSlider();
+  } else if (direction === "right") {
+    //??
+    slideIndex = (slideIndex + 1) % slideCount;
+    updateSlider();
+  }
+};
+
+const handleDot = (index) => {
+  slideIndex = index;
+  updateSlider();
+}
+
+const handleResize = () => {
+ let windowWidth = window.innerWidth;
+ if (windowWidth >= 975) {
+  slider.style.transform = `translateX(0)`;
+ }
+}
+
+sliderBtnLeft.addEventListener("click", () => handleArrow("left"));
 sliderBtnRight.addEventListener("click", () => handleArrow("right"));
+window.addEventListener('resize', handleResize);
