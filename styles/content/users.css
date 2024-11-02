@@ -63,6 +63,7 @@
 }
 
 .users__buttons {
+    margin: 0 auto;
     display: flex;
     gap: 14px;
     align-items: center;
@@ -97,6 +98,10 @@
         width: 244px;
         height: 244px;
         margin: 0 45.5px;
+    }
+
+    .users__buttons {
+        padding-right: 32px;
     }
 
     .users__buttons_desktop {
