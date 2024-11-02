@@ -5,8 +5,7 @@
 .users__list {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 20px;
 }
 
@@ -16,11 +15,13 @@
     align-items: center;
     gap: 6px;
     font-family: 'GolosText';
+    width: 394px;
 }
 
 .users__img {
     width: 320px;
     height: 320px;
+    margin: 0 37px;
 }
 
 .users__name {
@@ -62,8 +63,13 @@
         gap: 40px;
     }
 
+.users__item {
+    width: 335px;
+}
+
     .users__img {
         width: 244px;
         height: 244px;
+        margin: 0 45.5px;
     }
 }

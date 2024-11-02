@@ -147,6 +147,7 @@ const fillDotsInSlider = (number) => {
 
 const updateSlider = () => {
   slider.style.transform = `translateX(calc(-375px * ${slideIndex}))`;
+  disableButtons();
 };
 
 const disableButtons = () => {
@@ -167,12 +168,10 @@ const disableButtons = () => {
 const handleArrow = (direction) => {
   if (direction === "left") {
     slideIndex = (slideIndex - 1 + slideCount) % slideCount;
-    disableButtons();
     updateSlider();
   } else if (direction === "right") {
     //??
     slideIndex = (slideIndex + 1) % slideCount;
-    disableButtons();
     updateSlider();
   }
 };
