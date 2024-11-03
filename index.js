@@ -1,98 +1,35 @@
+import { runningLineText, stagesList, usersList } from "./const.js";
+
 let isMobile;
 //conts running line
-const runningLineText = [
-  {
-    id: 1,
-    text: "Дело помощи утопающим — дело рук самих утопающих!",
-  },
-  {
-    id: 2,
-    text: "Шахматы двигают вперед не только культуру, но и экономику!",
-  },
-  {
-    id: 3,
-    text: "Лед тронулся, господа присяжные заседатели!",
-  },
-];
 const runningLine = document.querySelectorAll(".running__list");
 
 //consts stages -> slider
-const stagesList = [
-  {
-    id: 1,
-    text: "Строительство железнодорожной магистрали Москва-Васюки",
-  },
-  {
-    id: 2,
-    text: "Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов",
-  },
-  {
-    id: 3,
-    text: "Поднятие сельского хозяйства в радиусе на тысячу километров: производство овощей, фруктов, икры, шоколадных конфет",
-  },
-  {
-    id: 4,
-    text: "Строительство дворца для турнира",
-  },
-  {
-    id: 5,
-    text: "Размещение гаражей для гостевого автотранспорта",
-  },
-  {
-    id: 6,
-    text: "Постройка сверхмощной радиостанции для передачи всему миру сенсационных результатов",
-  },
-  {
-    id: 7,
-    text: "Создание аэропорта «Большие Васюки» с регулярным отправлением почтовых самолётов и дирижаблей во все концы света, включая Лос-Анжелос и Мельбурн",
-  },
-];
 const stagesSliderConteiner = document.querySelector(".stages__slider");
 const slider = stagesSliderConteiner.querySelector(".stages__list");
 const sliderBtnLeft = stagesSliderConteiner.querySelector("#stages-left");
 const sliderBtnRight = stagesSliderConteiner.querySelector("#stages-right");
 const dotsConteiner = stagesSliderConteiner.querySelector(".stages__dots");
+const dots = [];
 const slideCount = 5;
 let slideIndex = 0;
+const numberOfUsers = () => {
+  let num = isMobile ? 1 : 3;
+  return num;
+};
 
 //conts users -> slider
-const usersList = [
-  {
-    name: "Хозе-Рауль Капабланка",
-    status: "Чемпион мира по шахматам",
-  },
-  {
-    name: "Эммануил Ласкер",
-    status: "Чемпион мира по шахматам",
-  },
-  {
-    name: "Александр Алехин",
-    status: "Чемпион мира по шахматам",
-  },
-  {
-    name: "Арон Нимцович",
-    status: "Чемпион мира по шахматам",
-  },
-  {
-    name: "Рихард Рети",
-    status: "Чемпион мира по шахматам",
-  },
-  {
-    name: "Остап Бендер",
-    status: "Гроссмейстер",
-  },
-];
 const usersSliderConteiner = document.querySelector(".users__slider");
 const users = usersSliderConteiner.querySelector(".users__list");
 const usersListInSlider = users.querySelectorAll(".users__item");
-const usersBtnLeft = usersSliderConteiner.querySelector("#users-left");
-const usersBtnRight = usersSliderConteiner.querySelector("#users-right");
-const spanCurrentIndex = usersSliderConteiner.querySelector("#currentIndex");
+const usersBtnLeft = document.querySelectorAll("#users-left");
+const usersBtnRight = document.querySelectorAll("#users-right");
+const spanCurrentIndex = document.querySelectorAll("#currentIndex");
 const usersCount = usersList.length;
 let currentUser = 0;
 
-// --> fill page <--
-const fillUsers = (array) => {
+// --> render page <--
+const renderUsers = (array) => {
   array.map((elem, i) => {
     users.insertAdjacentHTML(
       "beforeend",
@@ -106,7 +43,7 @@ const fillUsers = (array) => {
   });
 };
 
-const fillStages = (array) => {
+const renderStages = (array) => {
   array.map((elem) => {
     slider.insertAdjacentHTML(
       "beforeend",
@@ -118,7 +55,7 @@ const fillStages = (array) => {
   });
 };
 
-const fillRunningLine = (array) => {
+const renderRunningLine = (array) => {
   runningLine.forEach((line) => {
     array.map((elem) => {
       line.insertAdjacentHTML(
@@ -132,7 +69,7 @@ const fillRunningLine = (array) => {
 };
 
 // --> stages + slider <--
-const fillDotsInSlider = (number) => {
+const renderDotsInSlider = (number) => {
   for (let i = 0; i < number; i++) {
     dotsConteiner.insertAdjacentHTML(
       "beforeend",
@@ -141,14 +78,26 @@ const fillDotsInSlider = (number) => {
   }
   const dotsList = dotsConteiner.querySelectorAll(".stages__dot");
   dotsList.forEach((dot) => {
-    dot.addEventListener("click", () => handleDot(dot.id));
+    dots.push(dot);
+    dot.addEventListener("click", () => handleDot(Number(dot.id)));
   });
 };
 
 const updateSlider = () => {
   slider.style.transform = `translateX(calc(-375px * ${slideIndex}))`;
   disableButtons();
+  isActivedot();
 };
+
+const isActivedot = () => {
+  dots.forEach((elem) => {
+    if (Number(elem.id) === slideIndex) {
+      elem.classList.add("stages__dot_active");
+    } else {
+      elem.classList.remove("stages__dot_active");
+    }
+  })
+}
 
 const disableButtons = () => {
   if (slideIndex === 0) {
@@ -170,7 +119,6 @@ const handleArrow = (direction) => {
     slideIndex = (slideIndex - 1 + slideCount) % slideCount;
     updateSlider();
   } else if (direction === "right") {
-    //??
     slideIndex = (slideIndex + 1) % slideCount;
     updateSlider();
   }
@@ -185,45 +133,55 @@ const handleResize = () => {
   let windowWidth = window.innerWidth;
   if (windowWidth >= 975) {
     isMobile = false;
-  } else {isMobile = true}
+  } else {
+    isMobile = true;
+  }
   if (!isMobile) {
     slider.style.transform = `translateX(0)`;
     users.style.transform = `translateX(0)`;
   }
-  return isMobile
+  renderCountUser();
+  return isMobile;
 };
 
 // --> users + slider <--
-const fillCountUser = () => {
-  spanCurrentIndex.textContent = `${currentUser + 1}/${usersCount}`
-}
+const renderCountUser = () => {
+  spanCurrentIndex.forEach((elem) => elem.textContent = `${
+    ((currentUser + numberOfUsers() - 1) % usersCount) + 1
+  }/${usersCount}`);
+};
 
 const updateUserSlider = () => {
-  fillCountUser();
-  users.style.transform = `translateX(calc(${isMobile ? '-367px' : '-414px'} * ${currentUser}))`;
-}
+  renderCountUser();
+  users.style.transform = `translateX(calc(${
+    isMobile ? "-367px" : "-414px"
+  } * ${currentUser}))`;
+};
 
 const handleShowUser = (direction) => {
   if (direction === "left") {
-    currentUser = (currentUser - 1 + usersCount) % usersCount;
-    updateUserSlider()
+    currentUser =
+      (currentUser - 1 + (usersCount + 1 - numberOfUsers())) %
+      (usersCount + 1 - numberOfUsers());
+    updateUserSlider();
   } else if (direction === "right") {
-    currentUser = (currentUser + 1 ) % usersCount;
-    updateUserSlider()
+    currentUser = (currentUser + 1) % (usersCount + 1 - numberOfUsers());
+    updateUserSlider();
   }
 };
 
 // --> call functions <--
-// fillUsers(usersList);
-fillStages(stagesList);
-fillDotsInSlider(slideCount);
-fillRunningLine(runningLineText);
+handleResize();
+// renderUsers(usersList);
+renderStages(stagesList);
+renderDotsInSlider(slideCount);
+renderRunningLine(runningLineText);
 updateSlider();
 updateUserSlider();
 
 // --> EventListeners <--
 sliderBtnLeft.addEventListener("click", () => handleArrow("left"));
 sliderBtnRight.addEventListener("click", () => handleArrow("right"));
-usersBtnLeft.addEventListener("click", () => handleShowUser("left"));
-usersBtnRight.addEventListener("click", () => handleShowUser("right"));
+usersBtnLeft.forEach((btn) => btn.addEventListener("click", () => handleShowUser("left")));
+usersBtnRight.forEach((btn) => btn.addEventListener("click", () => handleShowUser("right")));
 window.addEventListener("resize", handleResize);

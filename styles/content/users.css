@@ -75,7 +75,15 @@
     line-height: 120px;
 }
 
-.users__buttons_desktop {}
+.users__title-conteiner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.users__buttons_desktop {
+    margin: 0;
+}
 
 .users__buttons_mobile {
     display: none;

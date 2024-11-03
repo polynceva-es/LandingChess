@@ -96,6 +96,10 @@ td span {
     text-align: start;
 }
 
+#lecture-span {
+    display: none;
+}
+
 @media (max-width: 1200px) {
     .events {
         gap: 34px;
@@ -122,8 +126,26 @@ td span {
         font-size: 28px;
     }
 
+    .events__caption {
+        font-size: 18px;
+    }
+
     tr {
         flex-direction: column;
+    }
+
+    tr:nth-child(4) {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+    }
+
+    tr:nth-child(4) th{
+        width: max-content;
+    }
+
+    tr:nth-child(4) td{
+        padding: 16px 0 12px 0;
     }
 
     th {
@@ -134,5 +156,18 @@ td span {
     td {
         border-left: none;
         padding: 0 0 16px;
+    }
+    #lecture-span {
+        display: block;
+        width: 335px;
+        height: 212.56px;
+        background-image: url(../../images/lecture.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin: 24px 0;
+    }
+    #lecture {
+        display: none;
     }
 }
