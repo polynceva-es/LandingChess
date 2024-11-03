@@ -7,13 +7,13 @@
 }
 
 .content {
-    margin: 80px auto 200px;
+    margin: 80px auto 141px;
     gap: 200px;
 }
 
 @media (max-width: 975px) {
     .content {
-        margin: 48px auto 100px;
+        margin: 48px auto 57px;
         gap: 120px;
     }
 }

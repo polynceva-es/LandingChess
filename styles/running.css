@@ -41,8 +41,10 @@
 
 @media (max-width: 975px) {
     .running {
-        font-size: 16px;
         padding: 10px 12px;
         height: 38px;
+    }
+    .running__list {
+        font-size: 16px;
     }
 }

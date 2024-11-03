@@ -54,7 +54,7 @@
 
 .stages__item {
     box-sizing: border-box;
-    padding: 20px;
+    padding: 16px 20px 6px;
     background-image: url(../../images/header-background.webp);
     font-family: 'GolosText';
     font-weight: 500;
@@ -163,7 +163,7 @@
 
     .stages::after {
         right: 0;
-        top: 13rem;
+        top: 12rem;
         bottom: auto;
         width: 100%;
         height: 12rem;
@@ -172,12 +172,14 @@
     .stages__title,
     .users__title {
         font-size: 36px;
+        line-height: 110%;
     }
 
     .stages__subtitle {
         font-size: 18px;
         width: 335px;
-        margin-bottom: 148px;
+        margin-bottom: 129px;
+        margin-top: 12px;
     }
 
     .stages__slider {

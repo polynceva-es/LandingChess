@@ -10,11 +10,12 @@
 .events__item_lecture {
     grid-template-columns: auto 394px;
     grid-template-rows: 250px;
+    align-items: center;
 }
 
 .events__item_session {
-    grid-template-columns: 500px auto;
-    grid-template-rows: 560px;
+    grid-template-columns: 468px auto;
+    grid-template-rows: 530px;
 }
 
 .events__title {
@@ -31,7 +32,7 @@
 .events__item-conteiner {
     display: flex;
     flex-direction: column;
-    gap: 44px;
+    gap: 40px;
     align-items: center;
 }
 
@@ -57,7 +58,7 @@ tr:last-of-type {
 
 th,
 td {
-    font-family: 'Golos_Text';
+    font-family: 'GolosText';
     font-size: 20px;
     line-height: 120%;
     letter-spacing: 0px;
@@ -68,7 +69,7 @@ th {
     color: var(--color-dark-grey);
     opacity: 70%;
     text-align: left;
-    padding: 16px 16px 16px 0;
+    padding: 16px 0px 16px 0;
     width: 306px;
 }
 
@@ -100,6 +101,10 @@ td span {
     display: none;
 }
 
+#session{
+    width: 100%;
+}
+
 @media (max-width: 1200px) {
     .events {
         gap: 34px;
@@ -110,6 +115,10 @@ td span {
         flex-direction: column;
         gap: 24px;
     }
+
+    .events__item-conteiner {
+        gap: 26px;
+    }
     
     .events__item_lecture {
         grid-template-columns: auto 335px;
@@ -119,6 +128,7 @@ td span {
     .events__item_session {
         grid-template-columns: 335px auto;
         grid-template-rows: 402px;
+        gap: 70px;
     }
 
 
