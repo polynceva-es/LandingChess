@@ -98,7 +98,7 @@
 
 @media (max-width: 975px) {
     .users__slider {
-        width: 414px;
+        width: 394px;
     }
 }
 
@@ -107,7 +107,7 @@
         gap: 32px;
     }
     .users__slider {
-        width: 367px;
+        width: 335px;
     }
     .users__img {
         width: 244px;
