@@ -5,6 +5,7 @@
     padding: 18px 12px;
     height: 60px;
     width: 100%;
+    display: flex;
 }
 
 .running__list {
@@ -26,17 +27,12 @@
 }
 
 @keyframes runningLine {
-    0% {
-        transform: translate(100%, 0);
-    }
-
-    50% {
-        transform: translate(0, 0);
-    }
-
-    100% {
-        transform: translate(-100%, 0);
-    }
+     from {
+        transform: translateX(0);
+     }
+     to {
+        transform: translateX(calc(-100%));
+     }
 }
 
 @media (max-width: 975px) {

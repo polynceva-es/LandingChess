@@ -10,7 +10,7 @@ export const runningLineText = [
     {
       id: 3,
       text: "Лед тронулся, господа присяжные заседатели!",
-    },
+    }
   ];
 
   export const stagesList = [
