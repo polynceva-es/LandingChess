@@ -89,23 +89,35 @@
     display: none;
 }
 
-@media (max-width: 975px) {
-    .users {
-        gap: 40px;
-    }
-
+@media (max-width: 1366px) {
     .users__slider {
-        width: 367px;
+        width: 808px;
     }
+}
 
+@media (max-width: 975px) {
+    .users__slider {
+        width: 414px;
+    }
+}
+
+@media (max-width: 515px) {
     .users__list {
         gap: 32px;
     }
-
+    .users__slider {
+        width: 367px;
+    }
     .users__img {
         width: 244px;
         height: 244px;
         margin: 0 45.5px;
+    }
+}
+
+@media (max-width: 975px) {
+    .users {
+        gap: 40px;
     }
 
     .users__buttons {

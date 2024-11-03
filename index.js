@@ -13,10 +13,7 @@ const dotsConteiner = stagesSliderConteiner.querySelector(".stages__dots");
 const dots = [];
 const slideCount = 5;
 let slideIndex = 0;
-const numberOfUsers = () => {
-  let num = isMobile ? 1 : 3;
-  return num;
-};
+let numberOfUsers;
 
 //conts users -> slider
 const usersSliderConteiner = document.querySelector(".users__slider");
@@ -131,23 +128,30 @@ const handleDot = (index) => {
 
 const handleResize = () => {
   let windowWidth = window.innerWidth;
-  if (windowWidth >= 975) {
+  if(windowWidth >=1366) {
     isMobile = false;
+    numberOfUsers = 3;
+  }else if (windowWidth >= 975) {
+    isMobile = false;
+    numberOfUsers = 2;
+  } else if(windowWidth > 515) {
+    isMobile = false;
+    numberOfUsers = 1;
   } else {
     isMobile = true;
+    numberOfUsers = 1
   }
   if (!isMobile) {
     slider.style.transform = `translateX(0)`;
     users.style.transform = `translateX(0)`;
   }
   renderCountUser();
-  return isMobile;
 };
 
 // --> users + slider <--
 const renderCountUser = () => {
   spanCurrentIndex.forEach((elem) => elem.textContent = `${
-    ((currentUser + numberOfUsers() - 1) % usersCount) + 1
+    ((currentUser + numberOfUsers - 1) % usersCount) + 1
   }/${usersCount}`);
 };
 
@@ -161,11 +165,11 @@ const updateUserSlider = () => {
 const handleShowUser = (direction) => {
   if (direction === "left") {
     currentUser =
-      (currentUser - 1 + (usersCount + 1 - numberOfUsers())) %
-      (usersCount + 1 - numberOfUsers());
+      (currentUser - 1 + (usersCount + 1 - numberOfUsers)) %
+      (usersCount + 1 - numberOfUsers);
     updateUserSlider();
   } else if (direction === "right") {
-    currentUser = (currentUser + 1) % (usersCount + 1 - numberOfUsers());
+    currentUser = (currentUser + 1) % (usersCount + 1 - numberOfUsers);
     updateUserSlider();
   }
 };
