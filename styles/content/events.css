@@ -1,10 +1,10 @@
 .events {
-    gap: 64px;
+    gap: 65px;
 }
 
 .events__item {
     display: grid;
-    gap: 44px;
+    gap: 50px;
 }
 
 .events__item_lecture {
@@ -32,7 +32,7 @@
 .events__item-conteiner {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 44px;
     align-items: center;
 }
 
@@ -83,6 +83,7 @@ td {
 
 td span {
     text-decoration: line-through var(--color-red);
+    margin-right: 7px;
 }
 
 .events__caption {
@@ -95,6 +96,7 @@ td span {
     caption-side: bottom;
     width: 100%;
     text-align: start;
+    margin-top: -15px;
 }
 
 #lecture-span {
@@ -138,6 +140,7 @@ td span {
 
     .events__caption {
         font-size: 18px;
+        margin-top: 0;
     }
 
     tr {

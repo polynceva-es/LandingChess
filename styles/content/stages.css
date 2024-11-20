@@ -37,11 +37,12 @@
     font-family: 'GolosText';
     font-weight: 400;
     font-size: 20px;
-    line-height: 120%;
+    line-height: 134%;
     letter-spacing: 0px;
     color: var(--color-blue);
     width: 280px;
     text-transform: none;
+    margin-left: 8px;
 }
 
 .stages__list {
@@ -54,7 +55,7 @@
 
 .stages__item {
     box-sizing: border-box;
-    padding: 16px 20px 6px;
+    padding: 16px 22px 24px;
     background-image: url(../../images/header-background.webp);
     font-family: 'GolosText';
     font-weight: 500;

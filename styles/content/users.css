@@ -1,5 +1,5 @@
 .users {
-    gap: 37px;
+    gap: 33px;
     margin-top: -28px;
 }
 
@@ -91,6 +91,14 @@
     display: none;
 }
 
+#currentIndex {
+    color: rgba(49, 49, 49, 0.6);
+}
+
+#currentIndex::first-letter {
+    color: var(--color-dark-grey);
+}
+
 @media (max-width: 1366px) {
     .users__slider {
         width: 808px;
@@ -127,10 +135,6 @@
     .users {
         gap: 40px;
         margin-top: 0;
-    }
-
-    .users__buttons {
-        /* padding-right: 32px; */
     }
 
     .users__buttons_desktop {
