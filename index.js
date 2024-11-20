@@ -177,14 +177,6 @@ const handleShowUser = (direction) => {
   }
 };
 
-// --> call functions <--
-handleResize();
-renderUsers(usersList);
-renderStages(stagesList);
-renderDotsInSlider(slideCount);
-renderRunningLine(runningLineText);
-updateSlider();
-updateUserSlider();
 
 // --> EventListeners <--
 sliderBtnLeft.addEventListener("click", () => handleArrow("left"));
@@ -196,3 +188,13 @@ usersBtnRight.forEach((btn) =>
   btn.addEventListener("click", () => handleShowUser("right"))
 );
 window.addEventListener("resize", handleResize);
+
+// --> call functions <--
+handleResize();
+renderUsers(usersList);
+renderStages(stagesList);
+renderDotsInSlider(slideCount);
+renderRunningLine(runningLineText);
+updateSlider();
+updateUserSlider();
+setInterval(()=> handleShowUser("right"), 4000);
