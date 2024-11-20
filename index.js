@@ -1,5 +1,3 @@
-import { runningLineText, stagesList, usersList } from "./const.js";
-
 let isMobile;
 //conts running line
 const runningLine = document.querySelectorAll(".running__list");
