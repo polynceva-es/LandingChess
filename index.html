@@ -51,7 +51,8 @@
     <main class="content page__conteiner">
         <div class="events" id="events">
             <article class="events__item events__item_lecture">
-                <h2 class="page__title events__title">Чтобы поддержать Международный васюкинский турнир <span id="lecture-span"></span>посетите лекцию
+                <h2 class="page__title events__title">Чтобы поддержать Международный васюкинский турнир <span
+                        id="lecture-span"></span>посетите лекцию
                     на&nbsp;тему:
                     <span class="events__title events__title_bold">«Плодотворная дебютная идея»</span>
                 </h2>
@@ -143,44 +144,7 @@
 
             </div>
             <div class="users__slider">
-                <ul class="users__list">
-                    <li class="users__item">
-                        <img class="users__img" src="./images/user.png"/>
-                        <h2 class="users__name">Хозе-Рауль Капабланка</h2>
-                        <h3 class="users__status">Чемпион мира по шахматам</h3>
-                        <button class="users__button">Подробнее</button>
-                    </li>
-                    <li class="users__item">
-                        <img class="users__img" src="./images/user.png"/>
-                        <h2 class="users__name">Эммануил Ласкер</h2>
-                        <h3 class="users__status">Чемпион мира по шахматам</h3>
-                        <button class="users__button">Подробнее</button>
-                    </li>
-                    <li class="users__item">
-                        <img class="users__img" src="./images/user.png"/>
-                        <h2 class="users__name">Александр Алехин</h2>
-                        <h3 class="users__status">Чемпион мира по шахматам</h3>
-                        <button class="users__button">Подробнее</button>
-                    </li>
-                    <li class="users__item">
-                        <img class="users__img" src="./images/user.png"/>
-                        <h2 class="users__name">Арон Нимцович</h2>
-                        <h3 class="users__status">Чемпион мира по шахматам</h3>
-                        <button class="users__button">Подробнее</button>
-                    </li>
-                    <li class="users__item">
-                        <img class="users__img" src="./images/user.png"/>
-                        <h2 class="users__name">Рихард Рети</h2>
-                        <h3 class="users__status">Чемпион мира по шахматам</h3>
-                        <button class="users__button">Подробнее</button>
-                    </li>
-                    <li class="users__item">
-                        <img class="users__img" src="./images/user.png"/>
-                        <h2 class="users__name">Остап Бендер</h2>
-                        <h3 class="users__status">Гроссмейстер</h3>
-                        <button class="users__button">Подробнее</button>
-                    </li>
-                </ul>
+                <ul class="users__list"></ul>
                 <div class="users__buttons users__buttons_mobile">
                     <button id="users-left" class="stages__button stages__button_left"></button>
                     <span id="currentIndex"></span>
@@ -202,6 +166,26 @@
                 стульев&raquo;.</p>
         </div>
     </footer>
+    <template id="runningItem">
+        <li class="running__item"></li>
+    </template>
+    <template id="stagesItem">
+        <li class="stages__item">
+            <span class="stages__item-num"></span>
+            <p class="stages__item-text"></p>
+        </li>
+    </template>
+    <template id="stagesDot">
+        <li class="stages__dot"></li>
+    </template>
+    <template id="userItem">
+        <li class="users__item">
+            <img class="users__img" src="./images/user.png" />
+            <h2 class="users__name"></h2>
+            <h3 class="users__status"></h3>
+            <button class="users__button">Подробнее</button>
+        </li>
+    </template>
     <script type="module" src="./const.js"></script>
     <script type="module" src="./index.js"></script>
 </body>

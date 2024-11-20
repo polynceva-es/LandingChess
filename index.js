@@ -3,6 +3,7 @@ import { runningLineText, stagesList, usersList } from "./const.js";
 let isMobile;
 //conts running line
 const runningLine = document.querySelectorAll(".running__list");
+const templateRunningItem = document.querySelector("#runningItem").content;
 
 //consts stages -> slider
 const stagesSliderConteiner = document.querySelector(".stages__slider");
@@ -10,6 +11,8 @@ const slider = stagesSliderConteiner.querySelector(".stages__list");
 const sliderBtnLeft = stagesSliderConteiner.querySelector("#stages-left");
 const sliderBtnRight = stagesSliderConteiner.querySelector("#stages-right");
 const dotsConteiner = stagesSliderConteiner.querySelector(".stages__dots");
+const templateStagesDot = document.querySelector("#stagesDot").content;
+const templateStagesItem = document.querySelector("#stagesItem").content;
 const dots = [];
 const slideCount = 5;
 let slideIndex = 0;
@@ -18,7 +21,7 @@ let numberOfUsers;
 //conts users -> slider
 const usersSliderConteiner = document.querySelector(".users__slider");
 const users = usersSliderConteiner.querySelector(".users__list");
-const usersListInSlider = users.querySelectorAll(".users__item");
+const templateUserItem = document.querySelector("#userItem").content;
 const usersBtnLeft = document.querySelectorAll("#users-left");
 const usersBtnRight = document.querySelectorAll("#users-right");
 const spanCurrentIndex = document.querySelectorAll("#currentIndex");
@@ -28,39 +31,35 @@ let currentUser = 0;
 // --> render page <--
 const renderUsers = (array) => {
   array.map((elem, i) => {
-    users.insertAdjacentHTML(
-      "beforeend",
-      `<li key=${i} class="users__item">
-            <img class="users__img" src="./images/user.png"/>
-            <h2 class="users__name">${elem.name}</h2>
-            <h3 class="users__status">${elem.status}</h3>
-            <button class="users__button">Подробнее</button>
-        </li>`
-    );
+    const userItem = templateUserItem
+      .querySelector(".users__item")
+      .cloneNode(true);
+    userItem.querySelector(".users__name").textContent = elem.name;
+    userItem.querySelector(".users__status").textContent = elem.status;
+    users.append(userItem);
   });
 };
 
 const renderStages = (array) => {
   array.map((elem) => {
-    slider.insertAdjacentHTML(
-      "beforeend",
-      `<li class="stages__item" key=${elem.id} id=item${elem.id}>
-            <span class="stages__item-num">${elem.id}</span>
-            <p>${elem.text}</p>
-        </li>`
-    );
+    const stagesItem = templateStagesItem
+      .querySelector(".stages__item")
+      .cloneNode(true);
+    stagesItem.id = `item${elem.id}`;
+    stagesItem.querySelector(".stages__item-num").textContent = elem.id;
+    stagesItem.querySelector(".stages__item-text").textContent = elem.text;
+    slider.append(stagesItem);
   });
 };
 
 const renderRunningLine = (array) => {
   runningLine.forEach((line) => {
     array.map((elem) => {
-      line.insertAdjacentHTML(
-        "beforeend",
-        `<li key=${elem.id} class="running__item">
-                    ${elem.text}
-                </li>`
-      );
+      const runningItem = templateRunningItem
+        .querySelector(".running__item")
+        .cloneNode(true);
+      runningItem.textContent = elem.text;
+      line.append(runningItem);
     });
   });
 };
@@ -68,10 +67,11 @@ const renderRunningLine = (array) => {
 // --> stages + slider <--
 const renderDotsInSlider = (number) => {
   for (let i = 0; i < number; i++) {
-    dotsConteiner.insertAdjacentHTML(
-      "beforeend",
-      `<li key=${i} id=${i} class="stages__dot"></li>`
-    );
+    const stagesDot = templateStagesDot
+      .querySelector(".stages__dot")
+      .cloneNode(true);
+    stagesDot.id = i;
+    dotsConteiner.append(stagesDot);
   }
   const dotsList = dotsConteiner.querySelectorAll(".stages__dot");
   dotsList.forEach((dot) => {
@@ -93,8 +93,8 @@ const isActivedot = () => {
     } else {
       elem.classList.remove("stages__dot_active");
     }
-  })
-}
+  });
+};
 
 const disableButtons = () => {
   if (slideIndex === 0) {
@@ -128,18 +128,18 @@ const handleDot = (index) => {
 
 const handleResize = () => {
   let windowWidth = window.innerWidth;
-  if(windowWidth >=1366) {
+  if (windowWidth >= 1366) {
     isMobile = false;
     numberOfUsers = 3;
-  }else if (windowWidth >= 975) {
+  } else if (windowWidth >= 975) {
     isMobile = false;
     numberOfUsers = 2;
-  } else if(windowWidth > 515) {
+  } else if (windowWidth > 515) {
     isMobile = false;
     numberOfUsers = 1;
   } else {
     isMobile = true;
-    numberOfUsers = 1
+    numberOfUsers = 1;
   }
   if (!isMobile) {
     slider.style.transform = `translateX(0)`;
@@ -150,9 +150,12 @@ const handleResize = () => {
 
 // --> users + slider <--
 const renderCountUser = () => {
-  spanCurrentIndex.forEach((elem) => elem.textContent = `${
-    ((currentUser + numberOfUsers - 1) % usersCount) + 1
-  }/${usersCount}`);
+  spanCurrentIndex.forEach(
+    (elem) =>
+      (elem.textContent = `${
+        ((currentUser + numberOfUsers - 1) % usersCount) + 1
+      }/${usersCount}`)
+  );
 };
 
 const updateUserSlider = () => {
@@ -176,7 +179,7 @@ const handleShowUser = (direction) => {
 
 // --> call functions <--
 handleResize();
-// renderUsers(usersList);
+renderUsers(usersList);
 renderStages(stagesList);
 renderDotsInSlider(slideCount);
 renderRunningLine(runningLineText);
@@ -186,6 +189,10 @@ updateUserSlider();
 // --> EventListeners <--
 sliderBtnLeft.addEventListener("click", () => handleArrow("left"));
 sliderBtnRight.addEventListener("click", () => handleArrow("right"));
-usersBtnLeft.forEach((btn) => btn.addEventListener("click", () => handleShowUser("left")));
-usersBtnRight.forEach((btn) => btn.addEventListener("click", () => handleShowUser("right")));
+usersBtnLeft.forEach((btn) =>
+  btn.addEventListener("click", () => handleShowUser("left"))
+);
+usersBtnRight.forEach((btn) =>
+  btn.addEventListener("click", () => handleShowUser("right"))
+);
 window.addEventListener("resize", handleResize);
