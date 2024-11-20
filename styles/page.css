@@ -19,6 +19,13 @@
     color: var(--color-dark-grey);
 }
 
+@media (max-width: 1230px) {
+    .page__conteiner {
+        padding: 0 60px;
+    }
+}
+
+
 @media (max-width: 975px) {
     .page__conteiner {
         max-width: 375px;

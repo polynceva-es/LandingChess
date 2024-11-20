@@ -22,7 +22,13 @@
 
 .header__logo {
     display: flex;
+    align-items: center;
     gap: 6px;
+}
+
+.header__logo-image {
+    width: 92px;
+    height: 31px;
 }
 
 .header__logo-title {
@@ -129,6 +135,11 @@
 
     .header__content {
         width: 335px;
+    }
+
+    .header__logo-image {
+        width: 80px;
+        height: 27px;
     }
 
     .header__logo-title {
